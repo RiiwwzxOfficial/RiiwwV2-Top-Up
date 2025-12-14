@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiiwwShopeeX - Topup All Games</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif;}
+body {background:#f5f7fa; color:#333; display:flex; flex-direction:column; min-height:100vh;}
+header {background:linear-gradient(90deg,#1e88e5,#42a5f5); color:#fff; padding:40px 20px; text-align:center;}
+header h1 {font-size:2.8rem; margin-bottom:10px; letter-spacing:1px;}
+header p {font-size:1.2rem; opacity:0.9;}
+main {flex:1; padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:50px;}
+.section-box {background:#fff; padding:30px 25px; border-radius:20px; box-shadow:0 12px 25px rgba(0,0,0,0.1); width:100%; max-width:700px;}
+.section-box h2 {color:#1e88e5; margin-bottom:25px; text-align:center;}
+.games-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px;}
+.game-card {background:#f0f4f8; border-radius:15px; padding:15px; text-align:center; transition:transform 0.3s,box-shadow 0.3s; cursor:pointer;}
+.game-card.selected {border:2px solid #1e88e5; background:#e3f2fd;}
+.game-card:hover {transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+.game-card img {width:80px; height:80px; object-fit:contain; margin-bottom:10px;}
+.game-card h3 {font-size:1.1rem; margin-bottom:5px;}
+.game-card p {font-weight:bold; color:#1e88e5;}
+.order-form label {display:block; margin-bottom:5px; font-weight:bold;}
+.order-form input, .order-form select, .order-form textarea {width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:1px solid #ccc; font-size:1rem; transition:border 0.3s;}
+.order-form input:focus, .order-form select:focus, .order-form textarea:focus {border-color:#1e88e5; outline:none;}
+.btn-submit, .btn-qris, .btn-copy {background:#1e88e5; color:#fff; padding:12px; width:100%; border:none; border-radius:12px; font-size:1.1rem; cursor:pointer; transition:0.3s; margin-top:10px;}
+.btn-submit:hover, .btn-qris:hover, .btn-copy:hover {background:#1565c0; transform:scale(1.03);}
+.qris-section, .bank-section {text-align:center; margin-top:20px;}
+.qris-section img {width:250px; max-width:80%; border-radius:15px; margin-bottom:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+.bank-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; margin-top:15px;}
+.bank-card {background:#f0f4f8; padding:15px; border-radius:12px; transition:transform 0.3s,box-shadow 0.3s; cursor:pointer;}
+.bank-card:hover {transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.15);}
+.bank-card h4 {font-size:1rem; margin-bottom:5px; color:#1e88e5;}
+.bank-card p {font-weight:bold; font-size:0.9rem; word-wrap:break-word;}
+.total-price {text-align:center; font-size:1.3rem; font-weight:bold; color:#1e88e5; margin-top:10px;}
+footer {background:#f5f7fa; padding:25px; text-align:center; font-size:0.95rem; color:#555; margin-top:auto;}
+footer a {color:#1e88e5; text-decoration:none; margin:0 5px;}
+@media(max-width:750px){.games-grid {grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}.bank-list {grid-template-columns:repeat(auto-fit,minmax(120px,1fr));}}
+</style>
+</head>
+<body>
+
+<header>
+<h1>RiiwwShopeeX</h1>
+<p>Topup All Games - Cepat, Mudah, dan Aman</p>
+</header>
+
+<main>
+<div class="section-box">
+<h2>Pilih Game & Top-Up</h2>
+<div class="games-grid">
+<!-- Game Cards -->
+<div class="game-card" data-price="10000" data-game="Mobile Legends"> <img src="https://static.moonton.com/games/mlbb_icon.png" alt="ML"><h3>Mobile Legends</h3><p>Diamonds 50 - Rp 10.000</p></div>
+<div class="game-card" data-price="18000" data-game="WDP Mobile Legends"> <img src="https://static.moonton.com/games/mlbb_icon.png" alt="WDP ML"><h3>WDP Mobile Legends</h3><p>Top-Up WDP - Rp 18.000</p></div>
+<div class="game-card" data-price="20000" data-game="Free Fire"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Free_Fire_logo.png/1200px-Free_Fire_logo.png" alt="FF"><h3>Free Fire</h3><p>Diamonds 100 - Rp 20.000</p></div>
+<div class="game-card" data-price="50000" data-game="Membership Free Fire"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Free_Fire_logo.png/1200px-Free_Fire_logo.png" alt="Membership FF"><h3>Membership Free Fire</h3><p>VIP Membership - Rp 50.000</p></div>
+<div class="game-card" data-price="25000" data-game="Genshin Impact"> <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Genshin_Impact_logo.png" alt="GI"><h3>Genshin Impact</h3><p>Primogems 60 - Rp 25.000</p></div>
+<div class="game-card" data-price="18000" data-game="PUBG Mobile"> <img src="https://upload.wikimedia.org/wikipedia/en/7/7e/PUBG_Mobile_logo.png" alt="PUBG"><h3>PUBG Mobile</h3><p>UC 100 - Rp 18.000</p></div>
+<div class="game-card" data-price="15000" data-game="Among Us"> <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Among_Us_icon.png" alt="AU"><h3>Among Us</h3><p>Coins 500 - Rp 15.000</p></div>
+<div class="game-card" data-price="12000" data-game="Roblox"> <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Roblox_Logo.png" alt="Roblox"><h3>Roblox</h3><p>Robux 100 - Rp 12.000</p></div>
+<div class="game-card" data-price="22000" data-game="Point Blank"> <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Point_Blank_logo.png" alt="PB"><h3>Point Blank</h3><p>Cash 200 - Rp 22.000</p></div>
+</div>
+</div>
+
+<div class="section-box order-form">
+<h2>Form Pemesanan & Pembayaran</h2>
+<form id="orderForm">
+<label for="name">Nama</label>
+<input type="text" id="name" placeholder="Masukkan nama kamu" required>
+
+<label for="contact">Kontak (WhatsApp)</label>
+<input type="text" id="contact" placeholder="081234567890" required>
+
+<label for="note">Catatan (Opsional)</label>
+<textarea id="note" rows="3" placeholder="Contoh: Request cepat"></textarea>
+
+<div class="total-price" id="totalPrice">Total: Rp 0</div>
+
+<button type="submit" class="btn-submit">Pesan Sekarang via WhatsApp</button>
+
+<div class="qris-section">
+<h2>Bayar dengan QRIS</h2>
+<img src="https://files.catbox.moe/o9d2ue.jpg?nominal=0" alt="QRIS RiiwwShopeeX" id="qris-img">
+<a href="https://files.catbox.moe/o9d2ue.jpg?nominal=0" target="_blank" class="btn-qris" id="qris-btn">Scan / Bayar Sekarang</a>
+</div>
+
+<div class="bank-section">
+<h2>Akun Bank & E-Wallet (Klik untuk copy)</h2>
+<div class="bank-list">
+<div class="bank-card" onclick="copyBank('dana')"><h4>DANA</h4><p id="dana">083897762065 - Rp 0</p></div>
+<div class="bank-card" onclick="copyBank('gopay')"><h4>GO-PAY</h4><p id="gopay">082128399932 - Rp 0</p></div>
+<div class="bank-card" onclick="copyBank('ovo')"><h4>OVO</h4><p id="ovo">085817306253 - Rp 0</p></div>
+<div class="bank-card" onclick="copyBank('seabank')"><h4>SEABANK</h4><p id="seabank">901068812599 - Rp 0</p></div>
+<div class="bank-card" onclick="copyBank('bri')"><h4>BRI</h4><p id="bri">482701053063538 - Rp 0</p></div>
+<div class="bank-card" onclick="copyBank('bsi')"><h4>BSI</h4><p id="bsi">7331392329 - Rp 0</p></div>
+</div>
+</div>
+
+</form>
+</div>
+</main>
+
+<footer>
+Whatsapp : 083897762065 | Telegram : <a href="https://t.me/RiiwwV2" target="_blank">t.me/RiiwwV2</a> | Instagram : <a href="https://www.instagram.com/Story_Kitaa10" target="_blank">Story_Kitaa10</a>
+<br>&copy; 2025 RiiwwShopeeX. All rights reserved.
+</footer>
+
+<script>
+const gameCards = document.querySelectorAll('.game-card');
+const nominalInput = document.getElementById('nominal');
+const totalPrice = document.getElementById('totalPrice');
+const qrisImg = document.getElementById('qris-img');
+const qrisBtn = document.getElementById('qris-btn');
+
+let selectedGames = [];
+
+gameCards.forEach(card=>{
+  card.addEventListener('click',()=>{
+    const gameName = card.dataset.game;
+    const price = parseInt(card.dataset.price);
+
+    if(card.classList.contains('selected')){
+      card.classList.remove('selected');
+      selectedGames = selectedGames.filter(g=>g.game!==gameName);
+    } else {
+      card.classList.add('selected');
+      selectedGames.push({game:gameName, price:price});
+    }
+
+    updateTotal();
+  });
+});
+
+function updateTotal(){
+  const total = selectedGames.reduce((sum,g)=>sum+g.price,0);
+  totalPrice.innerText = `Total: Rp ${total.toLocaleString()}`;
+  // Update QRIS & bank
+  qrisImg.src = `https://files.catbox.moe/o9d2ue.jpg?nominal=${total}`;
+  qrisBtn.href = `https://files.catbox.moe/o9d2ue.jpg?nominal=${total}`;
+  document.getElementById('dana').innerText = `083897762065 - Rp ${total}`;
+  document.getElementById('gopay').innerText = `082128399932 - Rp ${total}`;
+  document.getElementById('ovo').innerText = `085817306253 - Rp ${total}`;
+  document.getElementById('seabank').innerText = `901068812599 - Rp ${total}`;
+  document.getElementById('bri').innerText = `482701053063538 - Rp ${total}`;
+  document.getElementById('bsi').innerText = `7331392329 - Rp ${total}`;
+}
+
+// Copy bank/e-wallet nomor
+function copyBank(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>{alert(`Berhasil menyalin: ${text}`);});
+}
+
+// Submit order via WhatsApp
+document.getElementById('orderForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const contact = document.getElementById('contact').value;
+  const note = document.getElementById('note').value;
+
+  if(selectedGames.length===0){alert("Pilih minimal 1 game"); return;}
+  const gamesText = selectedGames.map(g=>`${g.game} - Rp ${g.price.toLocaleString()}`).join('%0A');
+  const total = selectedGames.reduce((sum,g)=>sum+g.price,0);
+  const message = `Halo RiiwwShopeeX,%0ASaya ingin melakukan top-up.%0A%0ANama: ${name}%0AGame:%0A${gamesText}%0ATotal: Rp ${total.toLocaleString()}%0AKontak: ${contact}%0ANote: ${note}`;
+  const whatsappLink = `https://wa.me/6283897762065?text=${message}`;
+  window.open(whatsappLink,'_blank');
+});
+</script>
+
+</body>
+</html>
