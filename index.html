@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RIIWWXZZ STORE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    RIIWWXZZ STORE – TOP UP ALL GAMES
+</header>
+
+<div class="admin-notice">
+⚠️ Jika ada kendala wajib chat admin<br>
+👉 <a href="https://t.me/Riiwwxz_V2" target="_blank">Chat Admin</a><br>
+📢 Channel Testimoni: <a href="https://t.me/Reall_Testi" target="_blank">Join Channel</a>
+</div>
+
+<!-- GAME SELECTION -->
+<section class="games-grid" id="gamesGrid"></section>
+
+<!-- FORM -->
+<section class="order-form">
+
+    <div class="form-part">
+        <label>ID Game</label>
+        <input type="text" id="userID" placeholder="Masukkan ID" required>
+    </div>
+
+    <div class="form-part">
+        <label>Server</label>
+        <input type="text" id="server" placeholder="Server" required>
+    </div>
+
+    <!-- PACKS -->
+    <div id="packsContainer"></div>
+
+    <!-- PAYMENT METHOD -->
+    <div class="payment-methods">
+        <label>Pilih Pembayaran</label>
+        <div onclick="selectPay('QRIS')" class="pay-btn">QRIS</div>
+        <div onclick="selectPay('DANA')" class="pay-btn">DANA</div>
+        <div onclick="selectPay('OVO')" class="pay-btn">OVO</div>
+    </div>
+
+    <div id="qrisContainer" class="qris-box"></div>
+
+    <!-- SUMMARY -->
+    <div class="summary-box">
+        <button onclick="checkout()">Bayar Sekarang</button>
+        <pre id="orderSummary"></pre>
+    </div>
+
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
