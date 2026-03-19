@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RIIWWXZZ STORE</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#0d6efd,#001f3f);
+    color:white;
+}
+
+header {
+    text-align:center;
+    padding:15px;
+    font-size:22px;
+    font-weight:bold;
+    background: rgba(0,0,0,0.4);
+}
+
+/* ADMIN */
+.admin {
+    background:white;
+    color:black;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.admin a {
+    color:#0d6efd;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+/* GAME */
+.games {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;
+    padding:15px;
+}
+
+.game {
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.game:hover {
+    transform: scale(1.05);
+}
+
+.game.active {
+    border:2px solid #0d6efd;
+    background:#e7f1ff;
+}
+
+/* CARD */
+.container {
+    max-width:900px;
+    margin:auto;
+    padding:10px;
+}
+
+.card {
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+}
+
+/* INPUT */
+input {
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+}
+
+/* BUTTON */
+button {
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* NOMINAL */
+.nominal-list {
+    max-height:200px;
+    overflow-y:auto;
+}
+
+.nominal {
+    border:1px solid #ccc;
+    padding:10px;
+    margin-top:8px;
+    border-radius:8px;
+    cursor:pointer;
+    background:white;
+    color:black;
+}
+
+.nominal.active {
+    border:2px solid #0d6efd;
+    background:#e7f1ff;
+}
+
+/* PAYMENT */
+.payment {
+    border:1px solid #ccc;
+    padding:10px;
+    margin-top:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.payment.active {
+    border:2px solid #0d6efd;
+    background:#e7f1ff;
+}
+
+/* QR */
+.qr {
+    text-align:center;
+    display:none;
+}
+
+.qr img {
+    width:200px;
+}
+</style>
+</head>
+
+<body>
+
+<header>RIIWWXZZ STORE</header>
+
+<div class="admin">
+⚠️ Jika ada kendala wajib chat admin <br><br>
+👉 <a href="https://t.me/Riiwwxz_V2" target="_blank">Chat Admin</a><br><br>
+📢 Channel Testimoni <br>
+👉 <a href="https://t.me/Reall_Testi" target="_blank">Join Channel</a>
+</div>
+
+<!-- GAME -->
+<div class="games">
+<div class="game" onclick="pilihGame(this,'Mobile Legends')">MLBB</div>
+<div class="game" onclick="pilihGame(this,'Free Fire')">Free Fire</div>
+<div class="game" onclick="pilihGame(this,'PUBG Mobile')">PUBG</div>
+<div class="game" onclick="pilihGame(this,'Genshin Impact')">Genshin</div>
+<div class="game" onclick="pilihGame(this,'Call of Duty Mobile')">CODM</div>
+<div class="game" onclick="pilihGame(this,'Valorant')">Valorant</div>
+<div class="game" onclick="pilihGame(this,'Arena of Valor')">AOV</div>
+<div class="game" onclick="pilihGame(this,'Clash of Clans')">COC</div>
+<div class="game" onclick="pilihGame(this,'Clash Royale')">Clash Royale</div>
+<div class="game" onclick="pilihGame(this,'Honkai Star Rail')">Honkai</div>
+<div class="game" onclick="pilihGame(this,'Roblox')">Roblox</div>
+<div class="game" onclick="pilihGame(this,'Steam Wallet')">Steam</div>
+<div class="game" onclick="pilihGame(this,'Google Play')">Google Play</div>
+<div class="game" onclick="pilihGame(this,'Garena Shell')">Garena</div>
+<div class="game" onclick="pilihGame(this,'League of Legends Wild Rift')">Wild Rift</div>
+<div class="game" onclick="pilihGame(this,'Point Blank')">PB</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>Data Akun</h3>
+<input id="id" placeholder="Masukkan ID">
+<input id="server" placeholder="Server">
+<button onclick="copyID()">Salin ID</button>
+</div>
+
+<div class="card">
+<h3>Pilih Nominal</h3>
+<div class="nominal-list" id="nominalList"></div>
+</div>
+
+<div class="card">
+<h3>Pilih Pembayaran</h3>
+<div class="payment" onclick="pilihPay(this,'QRIS')">QRIS</div>
+<div class="payment" onclick="pilihPay(this,'DANA')">DANA</div>
+<div class="payment" onclick="pilihPay(this,'OVO')">OVO</div>
+
+<div class="qr" id="qr">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=RIIWWXZZSTORE">
+<p>Scan QRIS untuk bayar</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Ringkasan</h3>
+<p id="ringkasan">Belum ada transaksi</p>
+<button onclick="kirim()">Beli Sekarang</button>
+</div>
+
+</div>
+
+<script>
+let game="", nominal="", pay="";
+
+function formatRupiah(angka){
+    return "Rp" + angka.toLocaleString("id-ID");
+}
+
+// generate nominal
+let list = document.getElementById("nominalList");
+for(let i=1000;i<=1000000;i+=1000){
+    let div=document.createElement("div");
+    div.className="nominal";
+    div.innerText=formatRupiah(i);
+
+    div.onclick=function(){
+        document.querySelectorAll(".nominal").forEach(e=>e.classList.remove("active"));
+        div.classList.add("active");
+        nominal=formatRupiah(i);
+        update();
+    };
+
+    list.appendChild(div);
+}
+
+function pilihGame(el,val){
+    document.querySelectorAll(".game").forEach(e=>e.classList.remove("active"));
+    el.classList.add("active");
+    game=val;
+    update();
+}
+
+function pilihPay(el,val){
+    document.querySelectorAll(".payment").forEach(e=>e.classList.remove("active"));
+    el.classList.add("active");
+    pay=val;
+
+    document.getElementById("qr").style.display = val=="QRIS"?"block":"none";
+    update();
+}
+
+function update(){
+    document.getElementById("ringkasan").innerText =
+    "Game: "+game+
+    "\nID: "+document.getElementById("id").value+
+    "\nServer: "+document.getElementById("server").value+
+    "\nNominal: "+nominal+
+    "\nPembayaran: "+pay;
+}
+
+function copyID(){
+    let id=document.getElementById("id");
+    id.select();
+    document.execCommand("copy");
+    alert("ID berhasil disalin!");
+}
+
+function kirim(){
+    let id=document.getElementById("id").value;
+    let server=document.getElementById("server").value;
+
+    if(!id||!server||!game||!nominal||!pay){
+        alert("Lengkapi semua data!");
+        return;
+    }
+
+    let text = `ORDER BARU%0A
+Game: ${game}%0A
+ID: ${id}%0A
+Server: ${server}%0A
+Nominal: ${nominal}%0A
+Pembayaran: ${pay}`;
+
+    // GANTI BOT TOKEN + CHAT ID ANDA
+    fetch(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage?chat_id=YOUR_CHAT_ID&text=${text}`);
+
+    alert("Order berhasil dikirim!");
+
+    if(pay!=="QRIS"){
+        window.open("https://files.catbox.moe/enoz5f.jpg);
+    }
+}
+</script>
+
+</body>
+</html>
